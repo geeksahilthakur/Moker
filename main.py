@@ -3,14 +3,14 @@ import random
 from numpy import cos
 import pyttsx3
 import pandas as pd
+import numpy as np
 import scipy as sp
 import speech_recognition as sr
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-
-
+from random import shuffle
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -22,47 +22,45 @@ def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
+
 def takeCommand():
     r = sr.Recognizer()
-    with sr.Microphone()  as source:
+    with sr.Microphone() as source:
         print("listening...")
         r.pause_threshold = 1
         audio = r.listen(source)
 
         try:
             print("Recognizing...")
-            query = r.recognize_google(audio,language='en-in')
-            print("user said: ",query)
+            query = r.recognize_google(audio, language='en-in')
+            print("user said: ", query)
 
         except Exception as e:
-            #print(e)
+            # print(e)
 
             print("Can you say that again please..")
             return "None"
         return query
 
 
-questions = pd.read_csv('C:\\Users\\hp\\Dropbox\\Mocker AI py files\\ques.csv', header = None)
+questions = pd.read_csv('C:\\Users\\hp\\Dropbox\\Mocker AI py files\\ques.csv', header=None)
 questions = pd.DataFrame(questions)
 print(questions)
 
 question = ([])
-for i in range(len(questions[0])):
-    question.append(questions[0][i])
+z = random.randint(0,1)
+for i in range(len(questions)):
+    question.append(questions[0][z])
 question.pop(0)
 
 speak("hey geek Mocker this side, let's start your interview with first question, your first question is")
 
-ques = random.sample(question,1)
 
-
-
-
-
-print(ques)
+print(question)
+ques = question
 speak(ques)
 
-keywords = questions[1:2].iloc[:,1:][:].values
+keywords = questions[1:2].iloc[:, 1:][:].values
 print("keywords : ", keywords)
 
 keywords = keywords
@@ -70,19 +68,17 @@ keywords = str(keywords).lower()
 answer = takeCommand().lower()
 print("user said : ", answer)
 
-
 x_list = word_tokenize(keywords)
 print(x_list)
 y_list = word_tokenize(answer)
 print(y_list)
 
 sw = stopwords.words('english')
-l1 =[];l2 =[]
-
+l1 = []
+l2 = []
 
 X_set = {w for w in x_list if not w in sw}
 Y_set = {w for w in y_list if not w in sw}
-
 
 rvector = X_set.union(Y_set)
 for w in rvector:
@@ -98,14 +94,7 @@ c = 0
 
 for i in range(len(rvector)):
     c += l1[i] * l2[i]
-cosine = c / float((sum(l1) * sum(l2)) ** 0.2)
-perc = round(cosine,2)*100
-print("cosine similarity:", perc,"%")
-speak(("cosine similarity:",perc,"%"))
-
-
-
-
-
-
-
+cosine = c / float((sum(l1) * sum(l2)) ** 0.4)
+perc = round(cosine, 2) * 100
+print("Answer matching percentage is:", perc, "%")
+speak(("Answer matching percentage is", perc, "%"))
