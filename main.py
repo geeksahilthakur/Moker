@@ -1,16 +1,10 @@
-import csv
-import random
-from numpy import cos
 import pyttsx3
 import pandas as pd
-import numpy as np
-import scipy as sp
+import json
 import speech_recognition as sr
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-from random import shuffle
+
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -43,27 +37,20 @@ def takeCommand():
         return query
 
 
-questions = pd.read_csv('C:\\Users\\hp\\Dropbox\\Mocker AI py files\\ques.csv', header=None)
-questions = pd.DataFrame(questions)
-print(questions)
-
-question = ([])
-z = random.randint(0,1)
-for i in range(len(questions)):
-    question.append(questions[0][z])
-question.pop(0)
-
-speak("hey geek Mocker this side, let's start your interview with first question, your first question is")
+with open("D:\\Mocker AI Data\\Mocker NLP\\ques.json") as json_data:
+    question = json.load(json_data)
+    q = pd.DataFrame(question)
+    print(q['questions'][1]['2'])
+    speak(q['questions'][1]['2'])
 
 
-print(question)
-ques = question
-speak(ques)
+print(q['questions'][1]['keywords'])
 
-keywords = questions[1:2].iloc[:, 1:][:].values
-print("keywords : ", keywords)
+for i in range(len(q['questions'][1]['keywords'])):
+    '''print(q['questions'][1]['keywords'][i])'''
 
-keywords = keywords
+keyword = (q['questions'][1]['keywords'][i])
+keywords = keyword
 keywords = str(keywords).lower()
 answer = takeCommand().lower()
 print("user said : ", answer)
@@ -94,7 +81,7 @@ c = 0
 
 for i in range(len(rvector)):
     c += l1[i] * l2[i]
-cosine = c / float((sum(l1) * sum(l2)) ** 0.4)
+cosine = c / float((sum(l1) * sum(l2)) ** 0.2)
 perc = round(cosine, 2) * 100
 print("Answer matching percentage is:", perc, "%")
 speak(("Answer matching percentage is", perc, "%"))

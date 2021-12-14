@@ -1,0 +1,44 @@
+{
+    "questions":[
+        {
+            "1":"Why don't you Tell me about yourself",
+            "keywords":["myself","hailed","schooling","interest","programming"
+            ]
+        },
+        {
+            "2":"How do you get to know about our company?",
+            "keywords":["friends","media","advertisement","newspapers","internet"
+            ]
+        },
+        {
+            "3":"Why this role attract you?",
+            "keywords":["high paying","competitiveness","working","challenging","use case"
+            ]
+        },
+        {
+            "4":"What is more important to you: the money or the work?",
+            "keywords":["money","work","dedication","peace","righteousness"
+            ]
+        },
+        {
+            "5":"What do you know about this organization?",
+            "keywords":["infrastructure","office","head","ceo","team"
+            ]
+        },
+        {
+            "6":"Why should we hire you?",
+            "keywords":["dedicated","working","problem","energetic","learner"
+            ]
+        },
+        {
+            "7":"How would you rate yourself on a scale of 1 to 10?",
+            "keywords":["would","rate","hard","skills","sure"
+            ]
+        },
+        {
+            "8":"Where do you see yourself in next 5 years?",
+            "keywords":["country","job","salary","dreams","help"
+            ]
+        }
+    ]
+}
