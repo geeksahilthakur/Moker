@@ -1,3 +1,4 @@
+import random
 import pyttsx3
 import pandas as pd
 import json
@@ -40,16 +41,19 @@ def takeCommand():
 with open("D:\\Mocker AI Data\\Mocker NLP\\ques.json") as json_data:
     question = json.load(json_data)
     q = pd.DataFrame(question)
-    print(q['questions'][1]['2'])
-    speak(q['questions'][1]['2'])
+    x =  random.randint(0,7)
+    y = x+1
+    print(x,y)
+    print(q['questions'][x]['%s'%(y)])
+    speak(q['questions'][x]['%s'%(y)])
 
 
-print(q['questions'][1]['keywords'])
+print(q['questions'][x]['keywords'])
 
-for i in range(len(q['questions'][1]['keywords'])):
+for i in range(len(q['questions'][x]['keywords'])):
     '''print(q['questions'][1]['keywords'][i])'''
 
-keyword = (q['questions'][1]['keywords'][i])
+keyword = (q['questions'][x]['keywords'][i])
 keywords = keyword
 keywords = str(keywords).lower()
 answer = takeCommand().lower()
