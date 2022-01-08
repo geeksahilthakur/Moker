@@ -1,8 +1,8 @@
 {
     "questions":[
         {
-            "0":"Why don't you Tell me about yourself",
-            "keywords":["myself","schooling","interest","programming"
+            "0":"What is Python?",
+            "keywords":["Python is a High-Level Programming Language, with high-level inbuilt data structures and dynamic binding. It is interpreted and an object-oriented programming language. Python distinguishes itself from other programming languages in its easy to write and understand syntax, which makes it charming to both beginners and experienced folks alike. The extensive applicability and library support of Python allow highly versatile and scalable software and products to be built on top of it in the real world."
             ]
         },
         {
