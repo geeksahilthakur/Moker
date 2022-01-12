@@ -2,7 +2,6 @@ import random
 import pyttsx3
 import pandas as pd
 import json
-import pickle
 import speech_recognition as sr
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -46,7 +45,7 @@ with open("D:\\Mocker\\Mocker\\mainques.json") as json_data:
     print(x, y)
 
 # intro of the mock interview
-"""speak("Hey geek welcome to Mocker AI. Enter your name in oder to start your mock interview")
+speak("Hey geek welcome to Mocker AI. Enter your name in oder to start your mock interview")
 name = input("Enter your name :")
 speak(("welcome", name, "to your first Mock Interview "))
 speak("are you ready to start your mock interview")
@@ -55,9 +54,9 @@ if 'yes' in query:
     speak(("Great", name))
 
 speak(
-    "great, here is quick guide about this mock interview. I'll ask you 10 questions and it will include a coding "
+    "here is quick guide about this mock interview. I'll ask you 10 questions and it will include a coding "
     "problem to. And on the bases of your answers i'll give you marks")
-speak("so let's start your interview with first question, your first question is ")"""
+speak("so let's start your interview with first question, your first question is ")
 
 ques = (q['questions'][x]['%s' % (y)])
 print(ques)
