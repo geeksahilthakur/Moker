@@ -100,9 +100,11 @@ c = 0
 for i in range(len(rvector)):
     c += l1[i] * l2[i]
 cosine = c / float((sum(l1) * sum(l2)) ** 0.5)
-perc = round(cosine, 2) * 100
-print("Answer matching percentage is:", perc, "%")
-speak(("Answer matching percentage is", perc, "%"))
+perc1 = round(cosine, 1) * 100
+print("Answer matching percentage is:", perc1, "%")
+speak(("Answer matching percentage is", perc1, "%"))
+
+perf = []
 
 count = 0
 
@@ -156,9 +158,19 @@ while (count < 2):
         for i in range(len(rvector)):
             c += l1[i] * l2[i]
         cosine = c / float((sum(l1) * sum(l2)) ** 0.5)
-        perc = round(cosine, 2) * 100
+        perc = round(cosine, 1) * 100
         print("Answer matching percentage is:", perc, "%")
         speak(("Answer matching percentage is", perc, "%"))
+
+        perf.append(perc)
+
+print(perf)
+
+result = sum(perf)
+fr = result//200*100
+print(fr)
+
+
 
 
 
