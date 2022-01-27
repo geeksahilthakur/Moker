@@ -36,7 +36,6 @@ def takeCommand():
             return "None"
         return query
 
-
 with open("D:\\Mocker\\Mocker\\mainques.json") as json_data:
     question = json.load(json_data)
     q = pd.DataFrame(question)
@@ -165,10 +164,27 @@ while (count < 2):
         perf.append(perc)
 
 print(perf)
-
 result = sum(perf)
-fr = result//200*100
+fr = round(result,)
 print(fr)
+speak(fr)
+frs = round(result/200*100,)
+speak(frs)
+print(frs)
+
+if frs >= 35:
+    print(( "So you did an amazing job in the interview and got",frs ,"percent. you'll definitely be able to crack the interview. and get the dream job in your first attempt"))
+    speak(( "So you did an amazing job in the interview and got",frs ,"percent. you'll definitely be able to crack the interview. and get the dream job in your first attempt"))
+
+else:
+    print(("Your score was",frs , "which isn't a very good score. but you need to practice more so you'll be able to do well in the next interview. Practice makes perfect, after all."))
+    speak(("Your score was",frs , "which isn't a very good score. but you need to practice more so you'll be able to do well in the next interview. Practice makes perfect, after all."))
+
+
+
+
+
+
 
 
 
